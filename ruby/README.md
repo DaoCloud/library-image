@@ -58,7 +58,7 @@ ruby:<version>
 ruby:onbuild
 `
 
-这个镜像使得构建派生镜像更简单。对应很多用例，在你的工程中创建一个带有 `FROM ruby:onbuild` 的 `Dockerfile` 去构建一个独立的镜像就已经足够了。
+这个镜像使得构建派生镜像更简单。对应很多用例，在你的工程中创建一个带有 `FROM daocloud.io/library/ruby:onbuild` 的 `Dockerfile` 去构建一个独立的镜像就已经足够了。
 
 但是 `onbuild` 对于那些不想去docker化应用或者在很短时间内就可以用docker来运行的用户很有用。但这种使用方式长期来说不被推荐，因为很多控制权都在 `ONBUILD` 时运行。（参考 `docker/docker#5714`，`docker/docker#8240`，`docker/docker#11917`）。
 
