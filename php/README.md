@@ -13,9 +13,9 @@ PHP（全称：PHP：Hypertext Preprocessor，即“PHP：超文本预处理器�
 
 ### 通过命令行
 
-对于通过命令行界面（CLI）执行的 PHP 项目，您可以根据以下进行操作。
+对于通过命令行界面（CLI）执行的 PHP 项目，您可以执行以下操作。
 
-#### 在你的 PHP 项目中创建一个 `Dockerfile`
+#### 在您的 PHP 项目中创建一个 `Dockerfile`
 
 ```
 FROM php:5.6-cli
@@ -33,17 +33,17 @@ docker run -it --rm --name my-running-app my-php-app
 
 #### 执行一个单独的 PHP 脚本
 
-对于很多简单的单文件项目，您可能发现写一个完整的 ｀Dockerfile｀ 很不方便。在这种情况下，您可以通过使用 PHP Docker 镜像来直接的执行 PHP 脚本：
+对于很多简单的单文件项目，您可能发现写一个完整的 `Dockerfile` 很不方便。在这种情况下，您可以通过使用 PHP Docker 镜像来直接的执行 PHP 脚本：
 
 ```
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:5.6-cli php your-script.php
 ```
 
-### With Apache
+### 使用 Apache
 
-更常见的事，您也许想和 Apache httpd 一起执行 PHP 。幸运的是，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
+更常见的是，您也许想和 Apache httpd 一起执行 PHP 。方便的是，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
 
-#### 在你的 PHP 项目中创建一个 `Dockerfile`
+#### 在您的 PHP 项目中创建一个 `Dockerfile`
 
 ```
 FROM php:5.6-apache
@@ -57,7 +57,7 @@ docker build -t my-php-app .
 docker run -it --rm --name my-running-app my-php-app
 ```
 
-我们建议您添加自定义的 `php.ini` 配置文件。通过添加一行到 Dockerfile 将它 `复制` 到 `/user/local/etc/php` 中并执行相同的命令来构建和运行：
+我们建议您添加自定义的 `php.ini` 配置文件。通过添加一行到 Dockerfile 将它 `COPY` 到 `/user/local/etc/php` 中并执行相同的命令来构建和运行：
 
 ```
 FROM php:5.6-apache
@@ -69,9 +69,9 @@ COPY src/ /var/www/html/
 
 #### 如何安装更多的 PHP 插件
 
-我们提供了两款名为 `docker-php-ext-configure` 和 `docker-php-ext-install` 的方便脚本，您可以通过试用它们来简单的使用 PHP 插件。
+我们提供了两款名为 `docker-php-ext-configure` 和 `docker-php-ext-install` 安装 PHP 插件。
 
-比如，如果您想有一个带 `icov`, `mcrypt` 和 `gd` 插件的 PHP-FPM 镜像，您可以继承您喜欢的基础镜像，并如下写您自己的 `Dockerfile` ：
+比如，如果您想有一个带 `icov`, `mcrypt` 和 `gd` 插件的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的 `Dockerfile` ：
 
 ```
 FROM php:5.6-fpm
@@ -87,11 +87,11 @@ RUN apt-get update && apt-get install -y \
 CMD ["php-fpm"]
 ```
 
-请记住，您必须手动安装插件所需要的依赖。如果插件需要自定义的 `配置` 参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
+请记住，您必须手动安装插件所需要的依赖。如果一个插件需要自定义的 `配置` 参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
 
 #### 不使用 `Dockerfile`
 
-如果您不想在您的项目中引入 `Dockerfile` ，您可以执行一下操作
+如果您不想在您的项目中引入 `Dockerfile` ，您可以执行以下操作：
 
 ```
 docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html php:5.6-apache
