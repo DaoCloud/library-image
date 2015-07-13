@@ -17,10 +17,21 @@ RabbitMQ 是开源的消息队列系统（或称消息中间件），它实现�
 RabbitMQ 通过节点名（通常是主机名）存储数据。所以我们启动 Docker 时需要设置 -h/--hostname 参数，这样可以让我们知道数据存在哪里。
 
 ```
-docker run --name some-rabbit -d daocloud.io/library/rabbitmq
+docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3
+
 ```
 
-如果你已经执行了上面的命令，那你就可以通过 `docker logs some-rabbit` 查看这个容器实例的日志了。
+如果你已经执行了上面的命令，那你就可以通过 `docker logs some-rabbit` 查看这个容器实例的日志了：
+```
+=INFO REPORT==== 6-Jul-2015::20:47:02 ===
+node           : rabbit@my-rabbit
+home dir       : /var/lib/rabbitmq
+config file(s) : /etc/rabbitmq/rabbitmq.config
+cookie hash    : UoNOcDhfxW9uoZ92wh6BjA==
+log            : tty
+sasl log       : tty
+database dir   : /var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+```
 
 #### Erlang Cookie
 
