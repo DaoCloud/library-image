@@ -102,3 +102,7 @@ docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/sr
 我们邀请您贡献新的功能、修复、和更新（无论大小）；我们总是很高兴能收到拉取请求，同时我们也会尽最快的速度去处理它们。
 
 在您开始编码之前，我们建议您先浏览下 **[GitHub issue](https://github.com/docker-library/rails/issues)**，尤其是那些有野心的贡献。这将会给其他的贡献值一个给您指引正确方向的机会，并对您的设计提供反馈和帮助您找到是否有其他人正在做相同的事情。
+
+# 该翻译的许可证
+
+<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
