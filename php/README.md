@@ -2,17 +2,16 @@
 
 > 此镜像从 [Docker Hub](https://registry.hub.docker.com/_/php/) 同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
 
-> 该镜像源由 Nginx 公司维护在 [Github](https://github.com/nginxinc/docker-nginx)。
 
-### 什么是 Nginx？
+## 什么是 PHP ？
 
-Nginx 是一款轻量级的 Web 服务器、反向代理服务器、及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。由俄罗斯的程序设计师 Igor Sysoev 所开发，供俄国大型的入口网站及搜索引擎 Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，事实上 Nginx 的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用 Nginx 网站用户有：新浪、网易、腾讯等。
->来自：[百度百科](http://baike.baidu.com/view/926025.htm)
+PHP（全称：PHP：Hypertext Preprocessor，即“PHP：超文本预处理器”）是一种开源的通用计算机脚本语言，尤其适用于网络开发并可嵌入HTML中使用。PHP的语法借鉴吸收C语言、Java和Perl等流行计算机语言的特点，易于一般程序员学习。PHP的主要目标是允许网络开发人员快速编写动态页面，但PHP也被用于其他很多领域。
+>来自：[维基百科](https://zh.wikipedia.org/wiki/PHP)
 
 
-### 如何使用 PHP 镜像？
+## 如何使用 PHP 镜像？
 
-#### 通过命令行
+### 通过命令行
 
 对于通过命令行界面（CLI）执行的 PHP 项目，您可以根据以下进行操作。
 
@@ -42,7 +41,7 @@ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/sr
 
 ### With Apache
 
-更常见的事，您也许想和 Apache httpd 一起执行 PHP 。幸运的事，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
+更常见的事，您也许想和 Apache httpd 一起执行 PHP 。幸运的是，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
 
 #### 在你的 PHP 项目中创建一个 `Dockerfile`
 
@@ -51,7 +50,7 @@ FROM php:5.6-apache
 COPY src/ /var/www/html/
 ```
 
-`src/` 文件夹包含了您全部的 PHP 代码。然后，然后，通过执行命令来构建和运行 Docker 镜像：
+`src/` 文件夹包含了您全部的 PHP 代码。然后，通过执行命令来构建和运行 Docker 镜像：
 
 ```
 docker build -t my-php-app .
@@ -68,4 +67,36 @@ COPY src/ /var/www/html/
 
 `src/` 文件夹包含了您全部的 PHP 代码， `config/` 包含了您的 `php.ini` 文件。
 
+#### 如何安装更多的 PHP 插件
 
+我们提供了两款名为 `docker-php-ext-configure` 和 `docker-php-ext-install` 的方便脚本，您可以通过试用它们来简单的使用 PHP 插件。
+
+比如，如果您想有一个带 `icov`, `mcrypt` 和 `gd` 插件的 PHP-FPM 镜像，您可以继承您喜欢的基础镜像，并如下写您自己的 `Dockerfile` ：
+
+```
+FROM php:5.6-fpm
+# Install modules
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng12-dev \
+    && docker-php-ext-install iconv mcrypt \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd
+CMD ["php-fpm"]
+```
+
+请记住，您必须手动安装插件所需要的依赖。如果插件需要自定义的 `配置` 参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
+
+#### 不使用 `Dockerfile`
+
+如果您不想在您的项目中引入 `Dockerfile` ，您可以执行一下操作
+
+```
+docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html php:5.6-apache
+```
+
+## 支持的 Docker 版本
+
+这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
