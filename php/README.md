@@ -67,11 +67,11 @@ COPY src/ /var/www/html/
 
 `src/` 文件夹包含了您全部的 PHP 代码， `config/` 包含了您的 `php.ini` 文件。
 
-#### 如何安装更多的 PHP 插件
+#### 如何安装更多的 PHP 扩展
 
-我们提供了两款名为 `docker-php-ext-configure` 和 `docker-php-ext-install` 安装 PHP 插件。
+我们提供了两款名为 `docker-php-ext-configure` 和 `docker-php-ext-install` 安装 PHP 扩展。
 
-比如，如果您想有一个带 `icov`, `mcrypt` 和 `gd` 插件的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的 `Dockerfile` ：
+比如，如果您想有一个带 `icov`, `mcrypt` 和 `gd` 扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的 `Dockerfile` ：
 
 ```
 FROM php:5.6-fpm
@@ -87,7 +87,7 @@ RUN apt-get update && apt-get install -y \
 CMD ["php-fpm"]
 ```
 
-请记住，您必须手动安装插件所需要的依赖。如果一个插件需要自定义的 `配置` 参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
+请记住，您必须手动安装扩展所需要的依赖。如果一个扩展需要自定义的 `配置` 参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
 
 #### 不使用 `Dockerfile`
 
