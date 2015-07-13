@@ -2,7 +2,7 @@
 
 > 此镜像从 [Docker Hub](https://registry.hub.docker.com/_/nginx/) 同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
 
-> 该镜像源由 Nginx 公司维护在 [Github](https://github.com/nginxinc/docker-nginx)。
+> 该镜像源维护在 [Github](https://github.com/docker-library/official-images/blob/master/library/nginx)。
 
 ### 什么是 Nginx？
 
