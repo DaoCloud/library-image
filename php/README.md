@@ -97,6 +97,10 @@ CMD ["php-fpm"]
 docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html php:5.6-apache
 ```
 
+## 许可
+
+要了解这个镜像中软件的许可证请浏览[许可证信息](http://php.net/license/)。
+
 ## 支持的 Docker 版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
