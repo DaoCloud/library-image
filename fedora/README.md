@@ -4,11 +4,11 @@
 
 > 该镜像源维护在 [Github](https://github.com/docker-library/official-images/blob/master/library/fedora)。
 
-### Fedora？
+![image](https://raw.githubusercontent.com/docker-library/docs/master/fedora/logo.png)
+
+### Fedora
 
 该镜像包括官方 Fedora 22, Fedora 21 和 半官方的 Fedora 20 (heisenbug)。
-
-![image](https://raw.githubusercontent.com/docker-library/docs/master/fedora/logo.png)
 
 `fedora:latest`会一直指向到最新的稳定版本。目前的稳定版本是 Fedora 22。因此`fedora:latest`和`fedora:22`是同一个镜像.
 
