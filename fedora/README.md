@@ -14,7 +14,7 @@
 
 Fedora rawhide 可以通过`fedora:rawhide`获得。Fedora 20 可以通过`fedora:20`和`fedora:heisenbug`获得。 目前 Fedora 20 已经不再维护了，最后一个补丁是 CVE-2015-4000 (Logjam)。
 
-http://mirrors.fedoraproject.org 这个链接可以用于自动选择镜像源。在`docker build`和`docker run`的时候都可以使用。
+Federa 的源位置可以通过设置 metalink 的位置到`http://mirrors.fedoraproject.org`来自动选择。
 
 ```
 $ docker run fedora cat /etc/yum.repos.d/fedora.repo | grep metalink
