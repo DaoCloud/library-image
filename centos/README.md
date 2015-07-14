@@ -1,9 +1,13 @@
 # CentOS
-> 此镜像从[DockerHub](https://registry.hub.docker.com/_/centos/)同步并提供中文文档支持，用来帮助国内开发者更方便的使用Docker镜像。
+> 此镜像从[Docker Hub](https://registry.hub.docker.com/_/centos/)同步并提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
+
+> 该镜像源维护在 [Github](https://github.com/docker-library/official-images/blob/master/library/centos)。
 
 ### CentOS
 
-CentOS 是一个基于 RedHat Linux 提供的可自由使用源代码的企业级Linux发行版本。每个版本的 CentOS 都会获得十年的支持（通过安全更新方式）。 新版本的 CentOS 大约每两年发行一次，而每个版本的 CentOS 会定期（大概每六个月）更新一次，以便支持新的硬件。 这样，建立一个安全、低维护、稳定、高预测性、高重复性的 Linux 环境。 CentOS是Community Enterprise Operating System的缩写。 （来自[百度百科](http://baike.baidu.com/view/26404.htm))
+CentOS 是一个基于 RedHat Linux 提供的可自由使用源代码的企业级 Linux 发行版本。每个版本的 CentOS 都会获得十年的支持（通过安全更新方式）。 新版本的 CentOS 大约每两年发行一次，而每个版本的 CentOS 会定期（大概每六个月）更新一次，以便支持新的硬件。 这样，建立一个安全、低维护、稳定、高预测性、高重复性的 Linux 环境。 CentOS 是 Community Enterprise Operating System 的缩写。 
+
+> 来自[百度百科](http://baike.baidu.com/view/26404.htm)
 
 ### CentOS 镜像
 
@@ -62,7 +66,7 @@ docker build --rm -t local/c7-systemd .
 
 #### 一个包含 systemd 的应用容器示例
 
-为了使用像上面那样包含 systemd 的容器，你需要创建一个类似下面的 Dockerfile
+为了使用像上面那样包含 systemd 的容器，你需要创建一个类似下面的 Dockerfile：
 
 ```
 FROM local/c7-systemd
@@ -85,3 +89,6 @@ docker build --rm -t local/c7-systemd-httpd
 docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
 ```
 
+### 支持的 Docker 版本
+
+这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
