@@ -17,6 +17,8 @@ PostgreSQL 是以加州大学伯克利分校计算机系开发的 Postgres，现
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d daocloud.io/library/postgres
 ```
 
+>因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
+
 这个镜像会导出 Postgres 的 5432 端口, 因此通过标准的'link'机制就可以方便的访问 Postgres 数据库实例。 容器启动时会通过`initdb`自动创建默认的`postgres`用户和数据库。
 
 > 数据库 postgres 是可以被用户，工具和第三方应用程序访问的默认数据库。 [Postgres 文档](postgresql.org/docs)
@@ -41,12 +43,14 @@ Postgres 镜像通过一系列环境变量来配置容器，虽然这些环境�
 `
 POSTGRES_PASSWORD
 `
+
 推荐您使用镜像时指定这个环境变量，它用来设置超级用户的密码。 默认的超级用户是由环境变量`POSTGRES_USER`指定的。 在开始的例子中，超级用户密码被设置为 "mysecretpassword"。
 
 
 `
 POSTGRES_USER
 `
+
 这个可选的环境变量是搭配`POSTGRES_PASSWORD`一起来设置用户名和密码的，它会创建一个指定名称的超级管理员和同名数据库。 如果没有设置这个环境变量，将使用默认值`postgres`。
 
 ### 如何扩展这个镜像
