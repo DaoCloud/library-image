@@ -10,11 +10,11 @@
 
 该镜像包括官方 Fedora 22, Fedora 21 和 半官方的 Fedora 20 (heisenbug)。
 
-`fedora:latest`会一直指向到最新的稳定版本。目前的稳定版本是 Fedora 22。因此`fedora:latest`和`fedora:22`是同一个镜像.
+标签`fedora:latest`会一直指向到最新的稳定版本。目前的稳定版本是 Fedora 22。因此标签`fedora:latest`和`fedora:22`是同一个镜像。
 
-Fedora rawhide 可以通过`fedora:rawhide`获得。Fedora 20 可以通过`fedora:20`和`fedora:heisenbug`获得。 目前 Fedora 20 已经不再维护了，最后一个补丁是 CVE-2015-4000 (Logjam).
+Fedora rawhide 可以通过`fedora:rawhide`获得。Fedora 20 可以通过`fedora:20`和`fedora:heisenbug`获得。 目前 Fedora 20 已经不再维护了，最后一个补丁是 CVE-2015-4000 (Logjam)。
 
-http://mirrors.fedoraproject.org 这个链接可以用于自动选择镜像源。`docker build`和`docker run`的时候都可以使用。
+http://mirrors.fedoraproject.org 这个链接可以用于自动选择镜像源。在`docker build`和`docker run`的时候都可以使用。
 
 ```
 $ docker run fedora cat /etc/yum.repos.d/fedora.repo | grep metalink
