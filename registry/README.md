@@ -1,5 +1,5 @@
 # Docker Registry
-> 此镜像从[DockerHub](https://registry.hub.docker.com/_/registry/)同步并提供中文文档支持，用来帮助国内开发者更方便的使用Docker镜像。
+> 此镜像从[DockerHub](https://registry.hub.docker.com/_/registry/)同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
 
 镜像 Tag >= 2 为[新版的Registry](https://github.com/docker/distribution)
 
@@ -12,6 +12,9 @@
 #### 快速启动 Registry
 * 启动 Registry：`docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry-dev daocloud.io/library/registry`
 * 修改 docker deamon 启动脚本，增加： `-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock –insecure-registry <REGISTRY_HOSTNAME>:5000`
+
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
+
 
 
 #### 推荐的方式启动 Registry

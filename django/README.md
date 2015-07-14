@@ -23,7 +23,7 @@ FROM daocloud.io/django:onbuild
 
 把这个文件放到项目的根目录。
 
-这个镜像包含很多`ONBUILD`，处理了大部分情况。构建时会执行`COPY . /usr/src/app`，`RUN pip install`，`EXPOSE 8000`，并且设置默认的执行命令：`python manage.py runserver`。
+这个镜像包含很多 `ONBUILD`，处理了大部分情况。构建时会执行 `COPY . /usr/src/app`，`RUN pip install`，`EXPOSE 8000`，并且设置默认的执行命令：`python manage.py runserver`。
 
 然后你可以构建并运行镜像:
 
@@ -32,7 +32,7 @@ docker build -t my-django-app .
 docker run --name some-django-app -d my-django-app
 ```
 
-你可以访问`http://container-ip:8000`来测试，如果想要通过主机 ip 来访问（如 `http://localhost:8000`），要执行下面的命令:
+你可以访问 `http://container-ip:8000` 来测试，如果想要通过主机 IP 来访问（如 `http://localhost:8000`），要执行下面的命令:
 
 ```
 docker run --name some-django-app -p 8000:8000 -d my-django-app
@@ -40,19 +40,19 @@ docker run --name some-django-app -p 8000:8000 -d my-django-app
 
 #### 不创建 Dockerile
 
-你可以直接使用`docker run`创建。
+你可以直接使用 `docker run` 创建。
 
 ```
-docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d daocloud.io/library/django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
 ```
 
 生成一个 django 项目
 
 ```
-docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject mysite
-This will create a sub-directory named mysite inside your current directory.
+docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/django django-admin.py startproject mysite
 ```
+上面的命令会在你当前目录下产生一个名为 mysite 的子文件夹。
 
-### 支持 Docker 版本
+### 支持的 Docker 版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。

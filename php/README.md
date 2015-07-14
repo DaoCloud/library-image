@@ -21,11 +21,12 @@ PHP（全称：PHP: Hypertext Preprocessor，中文名：「超文本预处理�
 #### 在您的 PHP 项目中创建一个`Dockerfile`
 
 ```
-FROM php:5.6-cli
+FROM daocloud.io/library/php:5.6-cli
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 CMD [ "php", "./your-script.php" ]
 ```
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
 
 然后，通过执行命令来构建和运行 Docker 镜像：
 
@@ -39,17 +40,17 @@ docker run -it --rm --name my-running-app my-php-app
 对于很多简单的单文件项目，您可能发现写一个完整的`Dockerfile`很不方便。在这种情况下，您可以通过使用 PHP Docker 镜像来直接的执行 PHP 脚本：
 
 ```
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:5.6-cli php your-script.php
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/php:5.6-cli php your-script.php
 ```
 
 ### 使用 Apache
 
-更常见的是，您也许想和 Apache httpd 一起执行 PHP 。方便的是，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
+更常见的是，您也许想和 Apache httpd 一起执行 PHP。方便的是，已经有了一个 PHP 容器版本打包了 Apache Web 服务器。
 
 #### 在您的 PHP 项目中创建一个`Dockerfile`：
 
 ```
-FROM php:5.6-apache
+FROM daocloud.io/library/php:5.6-apache
 COPY src/ /var/www/html/
 ```
 
@@ -60,24 +61,24 @@ docker build -t my-php-app .
 docker run -it --rm --name my-running-app my-php-app
 ```
 
-我们建议您添加自定义的`php.ini`配置文件。通过添加一行到 Dockerfile 将它`COPY`到`/user/local/etc/php`中并执行相同的命令来构建和运行：
+我们建议您添加自定义的 `php.ini` 配置文件。通过添加一行到 Dockerfile 将它 `COPY` 到 `/user/local/etc/php` 中并执行相同的命令来构建和运行：
 
 ```
-FROM php:5.6-apache
+FROM daocloud.io/library/php:5.6-apache
 COPY config/php.ini /usr/local/etc/php
 COPY src/ /var/www/html/
 ```
 
-在`src/`文件夹包含了您全部的 PHP 代码，`config/`包含了您的`php.ini`文件。
+在 `src/` 文件夹包含了您全部的 PHP 代码，`config/` 包含了您的 `php.ini` 文件。
 
 #### 如何安装更多的 PHP 扩展
 
 我们提供了两款名为`docker-php-ext-configure`和`docker-php-ext-install`安装 PHP 扩展。
 
-比如，如果您想有一个带`icov`,`mcrypt`和`gd`扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的`Dockerfile`：
+比如，如果您想有一个带 `icov`,`mcrypt`和`gd` 扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的`Dockerfile`：
 
 ```
-FROM php:5.6-fpm
+FROM daocloud.io/library/php:5.6-fpm
 # Install modules
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -90,14 +91,14 @@ RUN apt-get update && apt-get install -y \
 CMD ["php-fpm"]
 ```
 
-请记住，您必须手动安装扩展所需要的依赖。如果一个扩展需要自定义的配置参数，您可以像这个例子一样使用`docker-php-ext-configure`脚本。
+请记住，您必须手动安装扩展所需要的依赖。如果一个扩展需要自定义的配置参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
 
 #### 不使用`Dockerfile`
 
-如果您不想在您的项目中引入`Dockerfile`，您可以执行以下操作：
+如果您不想在您的项目中引入 `Dockerfile`，您可以执行以下操作：
 
 ```
-docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html php:5.6-apache
+docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html daocloud.io/library/php:5.6-apache
 ```
 
 ## 支持的 Docker 版本

@@ -18,6 +18,8 @@ Nginx 是一款轻量级的 Web 服务器、反向代理服务器、及电子邮
 docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d daocloud.io/library/nginx
 ```
 
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
+
 另外一种比上面绑定 volume 更推荐的做法是用 `Dockerfile` 生成包含网页内容的新镜像，如下所示：
 
 ```
