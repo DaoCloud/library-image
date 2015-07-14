@@ -67,6 +67,6 @@ $ for GOOS in darwin linux; do
 
 点击[这里](http://golang.org/LICENSE)可以查看本镜像的 license 信息。
 
-### Supported Docker versions
+### 支持的 Docker 版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
