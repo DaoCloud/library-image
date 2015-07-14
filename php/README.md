@@ -7,7 +7,7 @@
 
 ## 什么是 PHP ？
 
-PHP（全称：PHP:Hypertext Preprocessor，中文名：「超文本预处理器」）是一种通用开源脚本语言。语法吸收了 C 语言、Java 和 Perl 的特点，利于学习，使用广泛，主要适用于 Web 开发领域。PHP  独特的语法混合了 C、Java、Perl 以及 PHP 自创的语法。它可以比 CGI 或者 Perl 更快速地执行动态网页。用 PHP 做出的动态页面与其他的编程语言相比，PHP 是将程序嵌入到 HTML（标准通用标记语言下的一个应用）文档中去执行，执行效率比完全生成 HTML 标记的 CGI 要高许多；PHP 还可以执行编译后代码，编译可以达到加密和优化代码运行，使代码运行更快。
+PHP（全称：PHP: Hypertext Preprocessor，中文名：「超文本预处理器」）是一种通用开源脚本语言。语法吸收了 C 语言、Java 和 Perl 的特点，利于学习，使用广泛，主要适用于 Web 开发领域。PHP  独特的语法混合了 C、Java、Perl 以及 PHP 自创的语法。它可以比 CGI 或者 Perl 更快速地执行动态网页。用 PHP 做出的动态页面与其他的编程语言相比，PHP 是将程序嵌入到 HTML（标准通用标记语言下的一个应用）文档中去执行，执行效率比完全生成 HTML 标记的 CGI 要高许多；PHP 还可以执行编译后代码，编译可以达到加密和优化代码运行，使代码运行更快。
 
 > 来自[百度百科](http://baike.baidu.com/subview/99/5828265.htm)
 
@@ -18,7 +18,7 @@ PHP（全称：PHP:Hypertext Preprocessor，中文名：「超文本预处理器
 
 对于通过命令行界面 (CLI) 执行的 PHP 项目，您可以执行以下操作。
 
-#### 在您的 PHP 项目中创建一个`Dockerfile`：
+#### 在您的 PHP 项目中创建一个`Dockerfile`
 
 ```
 FROM php:5.6-cli
