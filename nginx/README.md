@@ -7,7 +7,7 @@
 ### 什么是 Nginx？
 
 Nginx 是一款轻量级的 Web 服务器、反向代理服务器、及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行。由俄罗斯的程序设计师 Igor Sysoev 所开发，供俄国大型的入口网站及搜索引擎 Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，事实上 Nginx 的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用 Nginx 网站用户有：新浪、网易、腾讯等。
->来自：[百度百科](http://baike.baidu.com/view/926025.htm)
+>来自[百度百科](http://baike.baidu.com/view/926025.htm)
 
 
 ### 如何使用 Nginx 镜像？
