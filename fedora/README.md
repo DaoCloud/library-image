@@ -8,6 +8,12 @@
 
 ### Fedora
 
+Fedora 是一个知名的 Linux 发行版，是一款由全球社区爱好者构建的面向日常应用的快速、稳定、强大的操作系统。它允许任何人自由地使用、修改和重发布，无论现在还是将来。它由一个强大的社群开发，这个社群的成员以自己的不懈努力，提供并维护自由、开放源码的软件和开放的标准。Fedora 项目由 Fedora 基金会管理和控制，得到了 Red Hat, Inc. 的支持。
+
+> 来自[百度百科](http://baike.baidu.com/view/182182.htm)
+
+### Fedora 镜像
+
 该镜像包括官方 Fedora 22, Fedora 21 和 半官方的 Fedora 20 (heisenbug)。
 
 标签`fedora:latest`会一直指向到最新的稳定版本。目前的稳定版本是 Fedora 22。因此标签`fedora:latest`和`fedora:22`是同一个镜像。
