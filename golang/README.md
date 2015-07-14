@@ -64,9 +64,9 @@ $ for GOOS in darwin linux; do
 > done
 ```
 
-### 授权
+### 许可
 
-点击[这里](http://golang.org/LICENSE)可以查看本镜像的授权信息。
+点击[许可证信息](http://golang.org/LICENSE)可以查看本镜像的许可证信息。
 
 ### 支持的 Docker 版本
 
