@@ -6,7 +6,7 @@
 
 ### 什么是 Java？
 
-Java 是由 Sun Microsystems 公司推出的 Java 面向对象程序设计语言（以下简称 Java 语言）和 Java 平台的总称。由 James Gosling 和同事们共同研发，并在 1995 年正式推出。Java 最初被称为 Oak，是1991年为消费类电子产品的嵌入式芯片而设计的。1995年更名为 Java，并重新设计用于开发 Internet 应用程序。用 Java 实现的 HotJava 浏览器（支持Java Applet）显示了 Java 的魅力：跨平台、动态 Web、Internet 计算。从此，Java 被广泛接受并推动了 Web 的迅速发展，常用的浏览器均支持 Java Applet。另一方面，Java 技术也不断更新。Java 自面世后就非常流行，发展迅速，对 C++ 语言形成有力冲击。在全球云计算和移动互联网的产业环境下，Java 更具备了显著优势和广阔前景。
+Java 是由 Sun Microsystems 公司推出的 Java 面向对象程序设计语言（以下简称 Java 语言）和 Java 平台的总称。由 James Gosling 和同事们共同研发，并在 1995 年正式推出。Java 最初被称为 Oak，是1991年为消费类电子产品的嵌入式芯片而设计的。1995年更名为 Java，并重新设计用于开发 Internet 应用程序。用 Java 实现的 HotJava 浏览器（支持Java Applet）显示了 Java 的魅力：跨平台、动态 Web、Internet 计算。从此，Java 被广泛接受并推动了 Web 的迅速发展。另一方面，Java 技术也不断更新。Java 自面世后就非常流行，发展迅速，对 C++ 语言形成有力冲击。在全球云计算和移动互联网的产业环境下，Java 更具备了显著优势和广阔前景。
 
 >来自[百度百科](http://baike.baidu.com/subview/29/12654100.htm)
 
