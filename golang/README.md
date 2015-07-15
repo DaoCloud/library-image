@@ -12,7 +12,7 @@ Go 是 Google 开发的一种编译型，可平行化，并具有垃圾回收功
 
 #### 在你的应用中启动一个 Go 实例
 
-你可以使用本镜像来创建一个 Go 的容器作为应用的构建环境，也可作为运行环境。在你的'Dockerfile'中写下以下代码行，Docker 会编译并且运行你的项目：
+你可以使用本镜像来创建一个 Go 的容器作为应用的构建环境，也可作为运行环境。在你的`Dockerfile`中写下以下代码行，Docker 会编译并且运行你的项目：
 
 ```
 FROM daocloud.io/library/golang:1.3-onbuild
@@ -39,7 +39,7 @@ docker run -it --rm --name my-running-app my-golang-app
 docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/golang:1.3 go build -v
 ```
 
-这个命令将当前目录作为一个 volume 挂载进容器，并把这个 volume 设置成工作目录，然后运行命令'go build'来编译应用。如果你的工程包含一个'Makefile'，你也可以运行一下命令：
+这个命令将当前目录作为一个 volume 挂载进容器，并把这个 volume 设置成工作目录，然后运行命令`go build`来编译应用。如果你的工程包含一个`Makefile`，你也可以运行一下命令：
 
 ```
 docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/golang:1.3 make
