@@ -5,14 +5,16 @@
 > 该镜像源维护在 [Github](https://github.com/docker-library/official-images/blob/master/library/php)。
 
 
-## 什么是 PHP ？
+## 什么是 PHP？
 
 PHP（全称：PHP: Hypertext Preprocessor，中文名：「超文本预处理器」）是一种通用开源脚本语言。语法吸收了 C 语言、Java 和 Perl 的特点，利于学习，使用广泛，主要适用于 Web 开发领域。PHP  独特的语法混合了 C、Java、Perl 以及 PHP 自创的语法。它可以比 CGI 或者 Perl 更快速地执行动态网页。用 PHP 做出的动态页面与其他的编程语言相比，PHP 是将程序嵌入到 HTML（标准通用标记语言下的一个应用）文档中去执行，执行效率比完全生成 HTML 标记的 CGI 要高许多；PHP 还可以执行编译后代码，编译可以达到加密和优化代码运行，使代码运行更快。
 
 > 来自[百度百科](http://baike.baidu.com/subview/99/5828265.htm)
 
 
-## 如何使用 PHP 镜像？
+## 如何使用这个镜像？
+
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
 
 ### 通过命令行
 
@@ -26,7 +28,7 @@ COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 CMD [ "php", "./your-script.php" ]
 ```
-> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
+
 
 然后，通过执行命令来构建和运行 Docker 镜像：
 
@@ -104,3 +106,7 @@ docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html daocloud.io
 ## 支持的 Docker 版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
+
+## 该翻译的许可证
+
+<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
