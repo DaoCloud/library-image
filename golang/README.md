@@ -4,15 +4,15 @@
 
 ### 什么是 Go
 
-Go 是 Google 开发的一种编译型，可平行化，并具有垃圾回收功能的编程语言。
+Go 是 Google 开发的一种编译型，可平行化，并具有垃圾回收功能的编程语言。罗伯特·格瑞史莫（Robert Griesemer），罗勃·派克（Rob Pike）及肯·汤普逊于 2007 年 9 月开始设计 Go 语言，稍后 Ian Lance Taylor, Russ Cox 加入项目中。Go 语言是基于 Inferno 操作系统所开发的。Go 语言于 2009 年 11 月正式宣布推出，成为开放源代码项目，并在 Linux 及 Mac OS X 平台上进行了实现，后追加 Windows 系统下的实现。
 
 > 来自[百度百科](http://baike.baidu.com/view/9257526.htm)
 
-### 如何使用 golang?
+### 如何使用?
 
 #### 在你的应用中启动一个 Go 实例
 
-你可以使用本镜像来创建一个 Go 的容器作为应用的构建环境，也可作为运行环境。在你的 Dockerfile 中写下以下代码行，docker 会编译并且运行你的项目：
+你可以使用本镜像来创建一个 Go 的容器作为应用的构建环境，也可作为运行环境。在你的'Dockerfile'中写下以下代码行，Docker 会编译并且运行你的项目：
 
 ```
 FROM daocloud.io/library/golang:1.3-onbuild
@@ -20,9 +20,9 @@ FROM daocloud.io/library/golang:1.3-onbuild
 
 > 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
 
-上面指定的这个镜像包含 ONBUILD 触发器，这个构建会依次执行 `COPY . /usr/src/app`，`RUN go get -d -v`，和 `RUN go install -v`。
+上面指定的这个镜像包含'ONBUILD'触发器，这个构建会依次执行`COPY . /usr/src/app`，`RUN go get -d -v`，和`RUN go install -v`。
 
-这个镜像也包含 `CMD ["app"]` 指令，表示应用的默认启动命令，不带任何参数。
+这个镜像也包含`CMD ["app"]`指令，表示应用的默认启动命令，不带任何参数。
 
 接着，你可以构建并运行你的 Docker 镜像：
 
@@ -39,7 +39,7 @@ docker run -it --rm --name my-running-app my-golang-app
 docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/golang:1.3 go build -v
 ```
 
-这个命令将当前目录作为一个 volume 挂载进容器，并把这个 volume 设置成工作目录，然后运行命令 go build 来编译应用。如果你的工程包含一个 Makefile，你也可以运行一下命令：
+这个命令将当前目录作为一个 volume 挂载进容器，并把这个 volume 设置成工作目录，然后运行命令'go build'来编译应用。如果你的工程包含一个'Makefile'，你也可以运行一下命令：
 
 ```
 docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/golang:1.3 make
@@ -63,10 +63,6 @@ $ for GOOS in darwin linux; do
 >   done
 > done
 ```
-
-### 许可
-
-点击[许可证信息](http://golang.org/LICENSE)可以查看本镜像的许可证信息。
 
 ### 支持的 Docker 版本
 
