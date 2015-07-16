@@ -58,10 +58,10 @@ Python镜像会有很多的形式，每一种形式都用以一个特殊的用�
 
 这是最原生的 Python 镜像。如果你不确定需要什么类型的 Python 镜像，那么你最有可能需要使用的就是这样的镜像。这类镜像设计的初衷，就是为了既满足直接运行的容器（挂载你的 Python 源代码并直接启动容器来运行你的应用），又满足基础镜像的需求，来构建其他的镜像。这些标签是`buildpack-deps` 的衍生和成熟版本。`buildpacks－deps`是设计用来满足那些在系统中拥有很多镜像的 Docker 用户的。从设计原则出发，它会包含很多冗余的 Debian 软件包。这将减少镜像在再构建时所需安装的软件数量，同时降低镜像在你系统中的存储空间。
 
-## 支持的 Docker 版本
+## 支持的Docker版本
 
-这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
+这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
