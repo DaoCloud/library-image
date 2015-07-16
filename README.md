@@ -86,7 +86,7 @@ Maintain the images synced from dockerhub
 - App Store（中间有空格，错误：AppStore、app store）
 - WiFi（错误：wifi、Wifi、Wi-fi）
 - email （错误：E-mail、Email）
-- 帐号（错误：账号，账户，帐户）
+- *账户*（错误：账号，账号，帐户）
  - [http://www.jianshu.com/p/baa85caede21] 
  - 苹果台湾用「帳號」，大陆用「账户」
  - 谷歌用「帐户」，百度用「帐号」
