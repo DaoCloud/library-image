@@ -49,16 +49,16 @@ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/j
 就像所用主流 Linux 发行版不会在它们的发行渠道中分发 Oracle Java 一样，我们也选择遵循这个惯例。 下面引用了一些发行版不分发 Oracle Java 的方式：
 
 * Ubuntu 在 Oracle 失效了 "Operating System Distributor License for Java" 授权后停止分发`sun-java6`软件包 ([lists.ubuntu.com](https://lists.ubuntu.com/archives/ubuntu-security-announce/2011-December/001528.html))
-* Debian 要求用户从 oracle.com 手动下载 Java tar 包，然后用 `java-package` 安装 ([wiki.debian.net](https://wiki.debian.org/Java/Sun))
+* Debian 要求用户从 oracle.com 手动下载 Java tar 包，然后用`java-package`安装 ([wiki.debian.net](https://wiki.debian.org/Java/Sun))
 *  Ubuntu 和 Debian 上的 webupd8 PPA 要求用户先接受 Oracle 授权才能用它们的软件下载和安装 Oracle Java ([webupd8.org](http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html))
-* Gentoo 有一个获取限制 (fetch-restriction) 要求用户从 Oracle 网站手动下载 Java tar包并接受授权 ([wiki.gentoo.org](https://wiki.gentoo.org/wiki/Java))
+* Gentoo 有一个获取限制 (fetch-restriction) 要求用户从 Oracle 网站手动下载 Java tar 包并接受授权 ([wiki.gentoo.org](https://wiki.gentoo.org/wiki/Java))
 * CentOS 要求用户从 java.com 下载 Oracle 提供的 rpm 包，然后接受 Oracle 授权。([wiki.centos.org](https://wiki.centos.org/HowTos/JavaRuntimeEnvironment))
 * RedHat 提供如何增加一个 Oracle 维护的 repo 的说明 ([access.redhat.com](https://access.redhat.com/solutions/732883))
 
-## 支持的 Docker 版本
+## 支持的Docker版本
 
-这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
+这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
