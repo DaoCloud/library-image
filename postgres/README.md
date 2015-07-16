@@ -19,7 +19,9 @@ PostgreSQL 是以加州大学伯克利分校计算机系开发的 Postgres，现
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d daocloud.io/library/postgres
 ```
 
-这个镜像会导出 Postgres 的 5432 端口, 因此通过标准的 `link` 机制就可以方便的访问 Postgres 数据库实例。 容器启动时会通过 `initdb` 自动创建默认的 `postgres` 用户和数据库。 数据库 `postgres` 是可以被用户，工具和第三方应用程序访问的默认数据库，参考[Postgres 文档](postgresql.org/docs)。
+这个镜像会导出 Postgres 的 5432 端口, 因此通过标准的`link`机制就可以方便的访问 Postgres 数据库实例。 容器启动时会通过`initdb`自动创建默认的 `postgres`用户和数据库。 数据库`postgres`是可以被用户，工具和第三方应用程序访问的默认数据库。
+
+> 参考[Postgres 文档](postgresql.org/docs)。
 
 
 ### 从应用中连接数据库
@@ -42,22 +44,21 @@ Postgres 镜像通过一系列环境变量来配置容器，虽然这些环境�
 POSTGRES_PASSWORD
 `
 
-推荐您使用镜像时指定这个环境变量，它用来设置超级用户的密码。 默认的超级用户是由环境变量 `POSTGRES_USER` 指定的。 在开始的例子中，超级用户密码被设置为 "mysecretpassword"。
-
+推荐您使用镜像时指定这个环境变量，它用来设置超级用户的密码。 默认的超级用户是由环境变量`POSTGRES_USER`指定的。 在开始的例子中，超级用户密码被设置为 "mysecretpassword"。
 
 `
 POSTGRES_USER
 `
 
-这个可选的环境变量是搭配 `POSTGRES_PASSWORD` 一起来设置用户名和密码的，它会创建一个指定名称的超级管理员和同名数据库。 如果没有设置这个环境变量，将使用默认值 `postgres`。
+这个可选的环境变量是搭配`POSTGRES_PASSWORD` 一起来设置用户名和密码的，它会创建一个指定名称的超级管理员和同名数据库。 如果没有设置这个环境变量，将使用默认值`postgres`。
 
 ## 如何扩展这个镜像
 
-如果您希望在这个镜像的派生镜像中执行额外的初始化工作，可以在 `/docker-entrypoint-init.d` 目录下增加 `*.sh` 脚本 （如果该目录不存在则创建目录），在初始化过程调用 `initdb` 创建默认的 postgres 用户和数据库后，它会执行该目录下的所有`*.sh`脚本完成额外初始化操作再启动服务。 
+如果您希望在这个镜像的派生镜像中执行额外的初始化工作，可以在`/docker-entrypoint-init.d`目录下增加`*.sh`脚本 （如果该目录不存在则创建目录），在初始化过程调用`initdb`创建默认的`postgres`用户和数据库后，它会执行该目录下的所有`*.sh`脚本完成额外初始化操作再启动服务。 
 
 > 如果您希望在初始化中执行 SQL 语句，强烈建议您使用 Postgres [单用户模式](http://www.postgresql.org/docs/9.3/static/app-postgres.html#AEN90580)。
 
-您还可以通过一个简单的 Dockerfile 设置 `locale`，下面这个例子将设置默认的 `locale` 为 `de_DE.utf8`：
+您还可以通过一个简单的`Dockerfile`设置`locale`，下面这个例子将设置默认的`locale`为`de_DE.utf8`：
 
 ```
 FROM daocloud.io/library/postgres:9.4
@@ -76,4 +77,4 @@ ENV LANG de_DE.utf8
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
