@@ -15,7 +15,7 @@ CentOS 是一个基于 RedHat Linux 提供的可自由使用源代码的企业�
 
 ### 持续构建
 
-标签 daocloud.io/library/centos:latest 总是指向了最新的可用版本。
+标签`daocloud.io/library/centos:latest`总是指向了最新的可用版本。
 
 CentOS 项目会对所有活跃操作系统版本进行定期的更新，这些镜像会每月更新或者针对紧急情况立刻更新。这些持续构建的镜像只会打上主版本标签，比如：
 
@@ -35,7 +35,7 @@ docker pull daocloud.io/library/centos:5.11
 
 ## 包管理
 
-默认情况下，为了减小镜像的尺寸，在构建 CentOS 镜像时用了 `yum` 的 `nodocs` 选项。 如果您安装一个包后发现文件缺失，请在`/etc/yum.conf` 中注释掉 `tsflogs=nodocs` 并重新安装您的包。 
+默认情况下，为了减小镜像的尺寸，在构建 CentOS 镜像时用了`yum`的`nodocs`选项。 如果您安装一个包后发现文件缺失，请在`/etc/yum.conf`中注释掉`tsflogs=nodocs`并重新安装您的包。 
 
 ## systemd 整合
 
