@@ -17,7 +17,7 @@ daocloud.io/library/centos:latest 总是指向了最新的可用版本。
 
 ### 持续构建
 
-CentOS 项目会对所有活跃操作系统版本进行定期的更新，这些镜像会每月更新或者针对紧急情况立刻更新。这些持续构建的镜像只会打上主版本标签，比如 
+CentOS 项目会对所有活跃操作系统版本进行定期的更新，这些镜像会每月更新或者针对紧急情况立刻更新。这些持续构建的镜像只会打上主版本标签，比如：
 
 ```
 docker pull daocloud.io/library/centos:6
@@ -27,7 +27,7 @@ docker pull daocloud.io/library/centos:7
 
 ### 小版本标签
 
-除此之外，还会根据操作系统厂商提供的不同版本提供包括小版本的镜像。请注意，这些小版本的镜像一旦推出就不会更新了。 如果您选择这些镜像，强烈推荐您在 Dockerfile 里包括 `RUN yum -y update && yum clean all`， 否则有可能会有安全隐患。 这些镜像的使用方式如下：
+除此之外，还会根据操作系统厂商提供的不同版本提供包括小版本的镜像。请注意，这些小版本的镜像一旦推出就不会更新了。 如果您选择这些镜像，强烈推荐您在 Dockerfile 里包括`RUN yum -y update && yum clean all`， 否则有可能会有安全隐患。 这些镜像的使用方式如下：
 
 ```
 docker pull daocloud.io/library/centos:5.11
@@ -60,7 +60,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 ```
 
-上面这个 Dockerfile 首先删除了 fakesystemd 并且安装了 systemd。然后您就可以构建基础镜像了。
+上面这个`Dockerfile`首先删除了 fakesystemd 并且安装了 systemd。然后您就可以构建基础镜像了。
 
 ```
 docker build --rm -t local/c7-systemd .
@@ -68,7 +68,7 @@ docker build --rm -t local/c7-systemd .
 
 ### 一个包含 systemd 的应用容器示例
 
-为了使用像上面那样包含 systemd 的容器，你需要创建一个类似下面的 Dockerfile：
+为了使用像上面那样包含 systemd 的容器，你需要创建一个类似下面的`Dockerfile`：
 
 ```
 FROM local/c7-systemd
@@ -85,16 +85,16 @@ docker build --rm -t local/c7-systemd-httpd
 
 ### 运行一个包含 systemd 的应用容器
 
-为了运行一个包含 systemd 的容器，您需要使用 `--privileged` 选项， 并且挂载主机的 cgroups 文件夹。 下面是运行 包含 systemd 的 httpd 容器的示例命令： 
+为了运行一个包含 systemd 的容器，您需要使用`--privileged`选项， 并且挂载主机的 cgroups 文件夹。 下面是运行包含 systemd 的 httpd 容器的示例命令： 
 
 ```
 docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
 ```
 
-## 支持的 Docker 版本
+## 支持的Docker版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
