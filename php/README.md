@@ -63,7 +63,7 @@ docker build -t my-php-app .
 docker run -it --rm --name my-running-app my-php-app
 ```
 
-我们建议您添加自定义的 `php.ini` 配置文件。通过添加一行到 Dockerfile 将它 `COPY` 到 `/user/local/etc/php` 中并执行相同的命令来构建和运行：
+我们建议您添加自定义的`php.ini`配置文件。通过添加一行到`Dockerfile`将它`COPY`到`/user/local/etc/php`中并执行相同的命令来构建和运行：
 
 ```
 FROM daocloud.io/library/php:5.6-apache
@@ -71,13 +71,13 @@ COPY config/php.ini /usr/local/etc/php
 COPY src/ /var/www/html/
 ```
 
-在 `src/` 文件夹包含了您全部的 PHP 代码，`config/` 包含了您的 `php.ini` 文件。
+在`src/`文件夹包含了您全部的 PHP 代码，`config/`包含了您的`php.ini`文件。
 
 #### 如何安装更多的 PHP 扩展
 
 我们提供了两款名为`docker-php-ext-configure`和`docker-php-ext-install`安装 PHP 扩展。
 
-比如，如果您想有一个带 `icov`,`mcrypt`和`gd` 扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的`Dockerfile`：
+比如，如果您想有一个带`icov`,`mcrypt`和`gd`扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的`Dockerfile`：
 
 ```
 FROM daocloud.io/library/php:5.6-fpm
@@ -93,20 +93,20 @@ RUN apt-get update && apt-get install -y \
 CMD ["php-fpm"]
 ```
 
-请记住，您必须手动安装扩展所需要的依赖。如果一个扩展需要自定义的配置参数，您可以像这个例子一样使用 `docker-php-ext-configure` 脚本。
+请记住，您必须手动安装扩展所需要的依赖。如果一个扩展需要自定义的配置参数，您可以像这个例子一样使用`docker-php-ext-configure`脚本。
 
 #### 不使用`Dockerfile`
 
-如果您不想在您的项目中引入 `Dockerfile`，您可以执行以下操作：
+如果您不想在您的项目中引入`Dockerfile`，您可以执行以下操作：
 
 ```
 docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html daocloud.io/library/php:5.6-apache
 ```
 
-## 支持的 Docker 版本
+## 支持的Docker版本
 
-这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。 
+这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
