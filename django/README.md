@@ -18,7 +18,7 @@ Django 是一个开放源代码的 Web 应用框架，由 Python 写成。采用
 ### 创建 Dockerfile（推荐）
 
 ```
-FROM daocloud.io/library/django:onbuild
+FROM daocloud.io/django:onbuild
 ```
 
 把这个文件放到项目的根目录。
@@ -43,13 +43,13 @@ docker run --name some-django-app -p 8000:8000 -d my-django-app
 你可以直接使用`docker run`创建。
 
 ```
-docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d daocloud.io/library/django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d daocloud.io/django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
 ```
 
 生成一个 django 项目
 
 ```
-docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/django django-admin.py startproject mysite
+docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/django django-admin.py startproject mysite
 ```
 上面的命令会在你当前目录下产生一个名为`mysite`的子文件夹。
 

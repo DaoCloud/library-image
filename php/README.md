@@ -23,7 +23,7 @@ PHP（全称：PHP: Hypertext Preprocessor，中文名：「超文本预处理�
 #### 在您的 PHP 项目中创建一个`Dockerfile`
 
 ```
-FROM daocloud.io/library/php:5.6-cli
+FROM daocloud.io/php:5.6-cli
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 CMD [ "php", "./your-script.php" ]
@@ -42,7 +42,7 @@ docker run -it --rm --name my-running-app my-php-app
 对于很多简单的单文件项目，您可能发现写一个完整的`Dockerfile`很不方便。在这种情况下，您可以通过使用 PHP Docker 镜像来直接的执行 PHP 脚本：
 
 ```
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/php:5.6-cli php your-script.php
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/php:5.6-cli php your-script.php
 ```
 
 ### 使用 Apache
@@ -52,7 +52,7 @@ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/sr
 #### 在您的 PHP 项目中创建一个`Dockerfile`：
 
 ```
-FROM daocloud.io/library/php:5.6-apache
+FROM daocloud.io/php:5.6-apache
 COPY src/ /var/www/html/
 ```
 
@@ -66,7 +66,7 @@ docker run -it --rm --name my-running-app my-php-app
 我们建议您添加自定义的`php.ini`配置文件。通过添加一行到`Dockerfile`将它`COPY`到`/user/local/etc/php`中并执行相同的命令来构建和运行：
 
 ```
-FROM daocloud.io/library/php:5.6-apache
+FROM daocloud.io/php:5.6-apache
 COPY config/php.ini /usr/local/etc/php
 COPY src/ /var/www/html/
 ```
@@ -80,7 +80,7 @@ COPY src/ /var/www/html/
 比如，如果您想有一个带`icov`,`mcrypt`和`gd`扩展的 PHP-FPM 镜像，您可以通过继承您喜欢的基础镜像，并编写您自己的`Dockerfile`：
 
 ```
-FROM daocloud.io/library/php:5.6-fpm
+FROM daocloud.io/php:5.6-fpm
 # Install modules
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -100,7 +100,7 @@ CMD ["php-fpm"]
 如果您不想在您的项目中引入`Dockerfile`，您可以执行以下操作：
 
 ```
-docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html daocloud.io/library/php:5.6-apache
+docker run -it --rm --name my-apache-php-app -v "$PWD":/var/www/html daocloud.io/php:5.6-apache
 ```
 
 ## 支持的Docker版本

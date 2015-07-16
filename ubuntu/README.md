@@ -17,13 +17,13 @@ Ubuntu 是基于 Debian GNU/Linux，支持 x86、amd64（即x64）和 ppc 架构
 ### ubuntu:14.04
 
 ```
-$ docker run daocloud.io/library/ubuntu:14.04 grep -v '^#' /etc/apt/sources.list
+$ docker run daocloud.io/ubuntu:14.04 grep -v '^#' /etc/apt/sources.list
 ```
 
 ### ubuntu:12.04
 
 ```
-$ docker run daocloud.io/library/ubuntu:12.04 cat /etc/apt/sources.list
+$ docker run daocloud.io/ubuntu:12.04 cat /etc/apt/sources.list
 ```
 
 ## 支持的Docker版本

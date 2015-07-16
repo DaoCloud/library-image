@@ -20,7 +20,7 @@ Java 是由 Sun Microsystems 公司推出的 Java 面向对象程序设计语言
 用这个镜像最简单的方式是直接用一个 Java 容器作为应用构建环境或者运行时环境。 可以像下面这样编写你的`Dockerfile`去编译和运行你的项目：
 
 ```
-FROM daocloud.io/library/java:7
+FROM daocloud.io/java:7
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN javac Main.java
@@ -39,7 +39,7 @@ docker run -it --rm --name my-running-app my-java-app
 在某些情况下，在容器内部运行你的应用可能不是很合适。你可以像下面这样，只在容器内编译你的应用，但是并不运行应用：
 
 ```
-docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/java:7 javac Main.java
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/java:7 javac Main.java
 ```
 
 在上面的实例中，你的当前目录会以`volume`的形式挂接进容器，并且设置工作目录为 volume 目录，然后运行命令`javac Main.java`触发 Java 编译`Main.java`并指定输出文件为`Main.class`。

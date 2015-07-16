@@ -16,7 +16,7 @@ PostgreSQL 是以加州大学伯克利分校计算机系开发的 Postgres，现
 ### 启动一个 Postgres 实例
 
 ```
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d daocloud.io/library/postgres
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d daocloud.io/postgres
 ```
 
 这个镜像会导出 Postgres 的 5432 端口, 因此通过标准的`link`机制就可以方便的访问 Postgres 数据库实例。 容器启动时会通过`initdb`自动创建默认的 `postgres`用户和数据库。 数据库`postgres`是可以被用户，工具和第三方应用程序访问的默认数据库。
@@ -61,7 +61,7 @@ POSTGRES_USER
 您还可以通过一个简单的`Dockerfile`设置`locale`，下面这个例子将设置默认的`locale`为`de_DE.utf8`：
 
 ```
-FROM daocloud.io/library/postgres:9.4
+FROM daocloud.io/postgres:9.4
 RUN localedef -i de_DE -c -f UTF-8 -A /usr/share/locale/locale.alias de_DE.UTF-8
 ENV LANG de_DE.utf8
 ```

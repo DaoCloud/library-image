@@ -23,7 +23,7 @@ Fedora rawhide 可以通过`fedora:rawhide`获得。Fedora 20 可以通过`fedor
 Federa 的源位置可以通过设置 metalink 的位置到`http://mirrors.fedoraproject.org`来自动选择。
 
 ```
-$ docker run daocloud.io/library/fedora cat /etc/yum.repos.d/fedora.repo | grep metalink
+$ docker run daocloud.io/fedora cat /etc/yum.repos.d/fedora.repo | grep metalink
 metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-debug-$releasever&arch=$basearch
 metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-source-$releasever&arch=$basearch

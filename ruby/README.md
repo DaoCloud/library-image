@@ -17,7 +17,7 @@ Ruby 是一个动态的，反射的，面向对象的，多用途的，开源的
 ### 创建一个`Dockerfile`在你的 Ruby 项目
 
 ```
-FROM daocloud.io/library/ruby:2.1-onbuild
+FROM daocloud.io/ruby:2.1-onbuild
 CMD ["./your-daemon-or-script.rb"]
 
 ```
@@ -38,7 +38,7 @@ docker run -it --name my-running-script my-ruby-app
 标签`ONBUILD`期望在您的应用目录中找到一个`Gemfile.lock`文件。 下面的`docker run`指令将会帮您生成一个。请在您应用的顶级目录（`Gemfile`所在的目录）下执行这个指令：
 
 ```
-docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/ruby:2.1 bundle install
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/ruby:2.1 bundle install
 ```
 
 ### 运行一个单独的 Ruby 脚本
@@ -46,7 +46,7 @@ docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/ruby:
 对于很多简单，单文件的工程，可以直接从本镜像直接运行一个 Ruby 脚本：
 
 ```
-docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/library/ruby:2.1 ruby your-daemon-or-script.rb
+docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp daocloud.io/ruby:2.1 ruby your-daemon-or-script.rb
 ```
 
 ## 镜像的版本
@@ -59,7 +59,7 @@ Ruby 镜像有很多不同的分类，每种分类是为特定案例所设计的
 
 ### `ruby:onbuild`
 
-这个镜像使得构建派生镜像更简单。对应很多用例，在你的工程中创建一个带有`FROM daocloud.io/library/ruby:onbuild`的`Dockerfile`去构建一个独立的镜像就已经足够了。
+这个镜像使得构建派生镜像更简单。对应很多用例，在你的工程中创建一个带有`FROM daocloud.io/ruby:onbuild`的`Dockerfile`去构建一个独立的镜像就已经足够了。
 
 然而`ONBUILD`版本的真正用意在于创建一个构建好就可以跑的镜像（短期内从零到容器化），由于缺少对*何时*`ONBUILD`操作会触发的掌控，并不推荐在项目里长期使用这个版本。
 

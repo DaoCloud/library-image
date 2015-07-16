@@ -16,7 +16,7 @@ Ruby on Rails 或 Rails，是一个用 Ruby 运行的开源互联网应用框架
 ### 在您的 Rails 项目中创建一个`Dockerfile`
 
 ```
-FROM daocloud.io/library/rails:onbuild
+FROM daocloud.io/rails:onbuild
 ```
 
 将这个文件置于您应用的顶层目录，与`Gemfile`在同一个目录下。
@@ -43,7 +43,7 @@ docker run --name some-rails-app -p 8080:3000 -d my-rails-app
 标签`ONBUILD`期望在您的应用目录中找到一个`Gemfile.lock`文件。 下面的`docker run`指令将会帮您生成一个。请在您应用的顶级目录（`Gemfile`所在的目录）下执行这个指令：
 
 ```
-docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/ruby:2.1 bundle install
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/ruby:2.1 bundle install
 ```
 
 ### 创建一个新的 Rails 应用
@@ -51,7 +51,7 @@ docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/ruby:
 如果您想为一个新的 Rails 项目生成一个目录结构，您可以这样：
 
 ```
-docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/rails rails new webapp
+docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/rails rails new webapp
 ```
 
 这将会在您的当前目录下创建一个叫做`webapp`的子目录。
@@ -66,7 +66,7 @@ docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/sr
 
 ### `rails:onbuild`
 
-这个镜像使得构建衍生镜像变得更加容易。大部分项目中，在您的项目的顶级目录中创建一个以`FROM daocloud.io/library/rails:onbuild`开头的`Dockerfile`已经足够让您创建一个独立的镜像了。
+这个镜像使得构建衍生镜像变得更加容易。大部分项目中，在您的项目的顶级目录中创建一个以`FROM daocloud.io/rails:onbuild`开头的`Dockerfile`已经足够让您创建一个独立的镜像了。
 
 然而`ONBUILD`版本的真正用意在于创建一个构建好就可以跑的镜像（短期内从零到容器化），由于缺少对*何时*`ONBUILD`操作会触发的掌控，并不推荐在项目里长期使用这个版本。
 

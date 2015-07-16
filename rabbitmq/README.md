@@ -18,7 +18,7 @@ RabbitMQ 是开源的消息队列系统（或称消息中间件），它实现�
 RabbitMQ 通过节点名（通常是主机名）存储数据。所以我们启动 Docker 时需要设置`-h/--hostname`参数，这样可以让我们知道数据存在哪里。
 
 ```
-docker run -d --hostname my-rabbit --name some-rabbit daocloud.io/library/rabbitmq:3
+docker run -d --hostname my-rabbit --name some-rabbit daocloud.io/rabbitmq:3
 ```
 
 如果你已经执行了上面的命令，那你就可以通过`docker logs some-rabbit`查看这个容器实例的日志了：
@@ -41,14 +41,14 @@ database dir   : /var/lib/rabbitmq/mnesia/rabbit@my-rabbit
 你可使用`RABBITMQ_ERLANG_COOKIE`来设置 RabbitMQ 实例的 cookie ：
 
 ```
-docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' daocloud.io/library/rabbitmq:3
+docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' daocloud.io/rabbitmq:3
 ```
 
 设置完成后，通过`docker link`连接此 RabbitMQ 实例：
 
 
 ```
-$ docker run -it --rm --link some-rabbit:my-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' daocloud.io/library/rabbitmq:3 bash
+$ docker run -it --rm --link some-rabbit:my-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' daocloud.io/rabbitmq:3 bash
 root@f2a2d3d27c75:/# rabbitmqctl -n rabbit@my-rabbit list_users
 Listing users ...
 guest   [administrator]
@@ -57,7 +57,7 @@ guest   [administrator]
 当然，你也可以设置`RABBITMQ_NODENAME`,这样你就可以更好的使用`rabbitmqctl`命令了。
 
 ```
-$ docker run -it --rm --link some-rabbit:my-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' -e RABBITMQ_NODENAME=rabbit@my-rabbit daocloud.io/library/rabbitmq:3 bash
+$ docker run -it --rm --link some-rabbit:my-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' -e RABBITMQ_NODENAME=rabbit@my-rabbit daocloud.io/rabbitmq:3 bash
 root@f2a2d3d27c75:/# rabbitmqctl list_users
 Listing users ...
 guest   [administrator]
@@ -68,13 +68,13 @@ guest   [administrator]
 RabbitMQ 已经有一些自带管理插件的镜像。用这些镜像创建的容器实例可以直接使用默认的 15672 端口访问，默认账号密码是`guest/guest`：
 
 ```
-docker run -d --hostname my-rabbit --name some-rabbit daocloud.io/library/rabbitmq:3-management
+docker run -d --hostname my-rabbit --name some-rabbit daocloud.io/rabbitmq:3-management
 ```
 
 然后打开浏览器访问 `http://容器 IP:15672` ，就可以管理你的 RabbitMQ 实例了，或者你可以暴露主机端口来访问：
 
 ```
-docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 daocloud.io/library/rabbitmq:3-management
+docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 daocloud.io/rabbitmq:3-management
 ``` 
 这时，你可访问 `http://localhost:8080` 或者 `http://宿主 IP:8080` 管理 RabbitMQ 服务了。
 

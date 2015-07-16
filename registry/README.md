@@ -18,7 +18,7 @@
 
 * 启动 Registry：
 
-`docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry-dev daocloud.io/library/registry`
+`docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry-dev daocloud.io/registry`
 
 * 修改 docker deamon 启动脚本，增加： 
 
@@ -36,7 +36,7 @@ docker run \
          -e AWS_SECRET=xdDowwlK7TJajV1Y7EoOZrmuPEJlHYcNP2k4j49T \
          -e SEARCH_BACKEND=sqlalchemy \
          -p 5000:5000 \
-         daocloud.io/library/registry
+         daocloud.io/registry
 ```
 
 注意：上面的示例中容器试图映射主机的 5000 端口，如果该端口已经被占用，可以映射其他空闲端口。

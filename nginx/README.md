@@ -18,13 +18,13 @@ Nginx 是一款轻量级的 Web 服务器、反向代理服务器、及电子邮
 ### 托管静态网页内容
 
 ```
-docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d daocloud.io/library/nginx
+docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d daocloud.io/nginx
 ```
 
 另外一种比上面绑定 volume 更推荐的做法是用`Dockerfile`生成包含网页内容的新镜像，如下所示：
 
 ```
-FROM daocloud.io/library/nginx
+FROM daocloud.io/nginx
 COPY static-html-directory /usr/share/nginx/html
 ```
 
@@ -51,7 +51,7 @@ docker run --name some-nginx -d -p 8080:80 some-content-nginx
 
 ### 进阶配置
 ```
-docker run --name some-nginx -v /some/nginx.conf:/etc/nginx/nginx.conf:ro -d daocloud.io/library/nginx
+docker run --name some-nginx -v /some/nginx.conf:/etc/nginx/nginx.conf:ro -d daocloud.io/nginx
 ```
 
 > 了解详细的 Nginx 配置文件语法，请参考：[官方文档](http://nginx.org/en/docs/)。
@@ -67,7 +67,7 @@ docker cp some-nginx:/etc/nginx/nginx.conf /some/nginx.conf
 您也可以通过推荐的`Dockerfile`方式来生成一个包含自定义配置文件的镜像，如下所示：
 
 ```
-FROM daocloud.io/library/nginx
+FROM daocloud.io/nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 ```
 

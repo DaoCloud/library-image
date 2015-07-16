@@ -15,14 +15,14 @@ CentOS 是一个基于 RedHat Linux 提供的可自由使用源代码的企业�
 
 ### 持续构建
 
-标签`daocloud.io/library/centos:latest`总是指向了最新的可用版本。
+标签`daocloud.io/centos:latest`总是指向了最新的可用版本。
 
 CentOS 项目会对所有活跃操作系统版本进行定期的更新，这些镜像会每月更新或者针对紧急情况立刻更新。这些持续构建的镜像只会打上主版本标签，比如：
 
 ```
-docker pull daocloud.io/library/centos:6
+docker pull daocloud.io/centos:6
 
-docker pull daocloud.io/library/centos:7
+docker pull daocloud.io/centos:7
 ```
 
 ### 小版本标签
@@ -30,7 +30,7 @@ docker pull daocloud.io/library/centos:7
 除此之外，还会根据操作系统厂商提供的不同版本提供包括小版本的镜像。请注意，这些小版本的镜像一旦推出就不会更新了。 如果您选择这些镜像，强烈推荐您在 Dockerfile 里包括`RUN yum -y update && yum clean all`， 否则有可能会有安全隐患。 这些镜像的使用方式如下：
 
 ```
-docker pull daocloud.io/library/centos:5.11
+docker pull daocloud.io/centos:5.11
 ```
 
 ## 包管理
@@ -42,7 +42,7 @@ docker pull daocloud.io/library/centos:5.11
 当前，因为 systemd 要求 CAP_SYS_ADMIN 权限，从而得到了读取主机 cgroup 的能力，CentOS7 中已经用 fakesystemd 代替了 systemd 来解决依赖问题。 如果您仍然希望使用 systemd，可用参考下面的 Dockerfile：
 
 ```
-FROM daocloud.io/library/centos:7
+FROM daocloud.io/centos:7
 MAINTAINER "you" <your@email.here>
 ENV container docker
 RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
