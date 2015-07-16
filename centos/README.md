@@ -13,9 +13,9 @@ CentOS 是一个基于 RedHat Linux 提供的可自由使用源代码的企业�
 
 > 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
 
-daocloud.io/library/centos:latest 总是指向了最新的可用版本。
-
 ### 持续构建
+
+标签 daocloud.io/library/centos:latest 总是指向了最新的可用版本。
 
 CentOS 项目会对所有活跃操作系统版本进行定期的更新，这些镜像会每月更新或者针对紧急情况立刻更新。这些持续构建的镜像只会打上主版本标签，比如：
 
