@@ -18,12 +18,12 @@ Django 是一个开放源代码的 Web 应用框架，由 Python 写成。采用
 ### 创建 Dockerfile（推荐）
 
 ```
-FROM daocloud.io/django:onbuild
+FROM daocloud.io/library/django:onbuild
 ```
 
 把这个文件放到项目的根目录。
 
-这个镜像包含很多 `ONBUILD`，处理了大部分情况。构建时会执行 `COPY . /usr/src/app`，`RUN pip install`，`EXPOSE 8000`，并且设置默认的执行命令：`python manage.py runserver`。
+这个镜像包含很多`ONBUILD`，处理了大部分情况。构建时会执行`COPY . /usr/src/app`，`RUN pip install`，`EXPOSE 8000`，并且设置默认的执行命令：`python manage.py runserver`。
 
 然后你可以构建并运行镜像:
 
@@ -32,7 +32,7 @@ docker build -t my-django-app .
 docker run --name some-django-app -d my-django-app
 ```
 
-你可以访问 `http://container-ip:8000` 来测试，如果想要通过主机 IP 来访问（如 `http://localhost:8000`），要执行下面的命令:
+你可以访问`http://容器 IP:8000` 来测试，如果想要通过主机 IP 来访问（如 `http://localhost:8000`），要执行下面的命令:
 
 ```
 docker run --name some-django-app -p 8000:8000 -d my-django-app
@@ -40,7 +40,7 @@ docker run --name some-django-app -p 8000:8000 -d my-django-app
 
 ### 不创建 Dockerile
 
-你可以直接使用 `docker run` 创建。
+你可以直接使用`docker run`创建。
 
 ```
 docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d daocloud.io/library/django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
@@ -51,12 +51,12 @@ docker run --name some-django-app -v "$PWD":/usr/src/app -w /usr/src/app -p 8000
 ```
 docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/app -w /usr/src/app daocloud.io/library/django django-admin.py startproject mysite
 ```
-上面的命令会在你当前目录下产生一个名为 mysite 的子文件夹。
+上面的命令会在你当前目录下产生一个名为`mysite`的子文件夹。
 
-## 支持的 Docker 版本
+## 支持的Docker版本
 
 这个镜像在 Docker 1.7.0 上提供最佳的官方支持，对于其他老版本的 Docker（1.0 之后）也能提供基本的兼容。
 
 ## 该翻译的许可证
 
-<span style="font-size: 75%; text-align: center; display: block;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>本作品由 DaoCloud 翻译并采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。</span>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">署名-非商业性使用-禁止演绎</a>进行许可。
