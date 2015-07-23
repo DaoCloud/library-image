@@ -18,7 +18,7 @@
 
 * 启动 Registry：
 
-`docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry-dev daocloud.io/registry`
+`docker run -p 5000:5000 -v <HOST_DIR>:/tmp/registry daocloud.io/registry`
 
 * 修改 docker deamon 启动脚本，增加： 
 
