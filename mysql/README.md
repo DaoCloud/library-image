@@ -28,7 +28,7 @@ $ docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 
 ### 使用 MySQL 命令行工具连接 MySQL
 
-下面的命令启动了另一个 MySQL 容器并使用 MySQL 命令行工具访问你之前的 MySQL 服务，之后能你就能向你的数据库执行 SQL 语句了：
+下面的命令启动了另一个 MySQL 容器并使用 MySQL 命令行工具访问你之前的 MySQL 服务，之后你就能向你的数据库执行 SQL 语句了：
 
 ```console
 $ docker run -it --link some-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
@@ -103,8 +103,8 @@ $ chcon -Rt svirt_sandbox_file_t /my/custom
 
 阅读 Docker 文档能快速了解不同的储存选项，并且有很多博客或论坛讨论并给出了这方面的建议。我们会在下面简单地演示一下：
 
-1. 在你宿主机的一个合适的卷上创建一个数据目录，例：`/my/own/datadir`。
-2. 使用下面的命令启动你的 `mysql` 容器：
+1. 在宿主机上创建一个数据目录，例：`/my/own/datadir`。
+2. 使用下面的命令启动 `mysql` 容器：
 
 ```console
 $ docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
