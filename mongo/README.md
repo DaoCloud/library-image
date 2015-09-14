@@ -1,5 +1,9 @@
 # MongoDB
 
+> 此镜像从 [Docker Hub](https://hub.docker.com/_/mongo/) 同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
+>
+> 该镜像源维护在 [Github](https://github.com/docker-library/mongo)。
+
 ## 什么是 MongoDB？
 
 MongoDB （源自 "humogous"）是一个面向文档的跨平台数据库。作为一个 NoSQL 数据库，MongoDB 避开了传统关系型数据库结构，转而使用动态类似 JSON 的 BSON 格式，使其能轻松地将多个数据写在同一类型中。MongoDB 以 AGPL 和 Apache License 联合协议发布。
@@ -12,10 +16,12 @@ MongoDB 最早由 10gen 软件公司（现在为 MongoDB 公司）于 2007 年 1
 
 ## 如何使用本镜像
 
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
+
 ### 启动一个 mongo 实例
 
 ```console
-$ docker run --name some-mongo -d mongo
+$ docker run --name some-mongo -d daocloud.io/mongo
 ```
 
 由于该镜像的 Dockerfile 中包含了 `EXPOSE 27017`（mongo 默认端口），所以可以通过 `link` 两个容器来访问它（就像下面的示例）。
@@ -29,7 +35,7 @@ $ docker run --name some-app --link some-mongo:mongo -d application-that-uses-mo
 ### 使用 `mongo` 命令
 
 ```console
-$ docker run -it --link some-mongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
+$ docker run -it --link some-mongo:mongo --rm daocloud.io/mongo sh -c 'exec mongo "$MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT/test"'
 ```
 
 ### 相关配置
@@ -39,7 +45,7 @@ $ docker run -it --link some-mongo:mongo --rm mongo sh -c 'exec mongo "$MONGO_PO
 你也可以简单地设置 `--storageEngine` 参数来指定你需要的储存引擎（比如 MongoDB 3.0 中的 WiredTiger）。如果需要从旧版本升级的话，请确保你已熟悉此[文档](http://docs.mongodb.org/manual/release-notes/3.0-upgrade/#change-storage-engine-to-wiredtiger)。
 
 ```console
-$ docker run --name some-mongo -d mongo --storageEngine wiredTiger
+$ docker run --name some-mongo -d daocloud.io/mongo --storageEngine wiredTiger
 ```
 
 ### 储存数据的位置
@@ -57,7 +63,7 @@ $ docker run --name some-mongo -d mongo --storageEngine wiredTiger
 2. 使用下面的命令启动 `mongo` 容器：
 
 ```console
-$ docker run --name some-mongo -v /my/own/datadir:/data/db -d mongo:tag
+$ docker run --name some-mongo -v /my/own/datadir:/data/db -d daocloud.io/mongo:tag
 ```
 
 我们通过 `-v /my/own/datadir:/data/db` 参数从宿主机挂载 `/my/own/datadir` 目录至容器内作为 `/data/db` 目录，那样 MongoDB 就会默认将数据文件写入这个目录中。
@@ -78,8 +84,6 @@ $ chcon -Rt svirt_sandbox_file_t /my/own/datadir
 
 我们最低为 Docker 1.0 版本提供力所能及的支持。
 
-## 用户反馈
-
 ### 文档
 
 你可以从 GitHub 的 [`docker-library/docs`](https://github.com/docker-library/docs) 库中的 [`mongo/`](https://github.com/docker-library/docs/tree/master/mongo)目录找到本镜像的文档。在发起一个 pull request 前请确保你已熟悉仓库中 [`README.md`](https://github.com/docker-library/docs/blob/master/README.md) 文档中的相关说明。
@@ -96,4 +100,7 @@ $ chcon -Rt svirt_sandbox_file_t /my/own/datadir
 
 对于热情的贡献者，在编码之前，我们建议你通过 [GitHub issue](https://github.com/docker-library/mysql/issues) 讨论你的计划。这样其他贡献者会协助你优化你的设计，并避免你做了别人重复的工作。
 
+## 该翻译的许可证
+
+本作品采用[署名-非商业性使用-禁止演绎](http://creativecommons.org/licenses/by-nc-nd/4.0/)进行许可。
 

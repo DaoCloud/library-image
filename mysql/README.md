@@ -1,19 +1,21 @@
 # MySQL
 
-> 此镜像从 [Docker Hub](https://registry.hub.docker.com/_/centos/) 同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
+> 此镜像从 [Docker Hub](https://hub.docker.com/_/mysql/) 同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
 >
-> 该镜像源维护在 [Github](https://github.com/docker-library/official-images/blob/master/library/mysql)。
+> 该镜像源维护在 [Github](https://github.com/docker-library/mysql)。
 
 MySQL 由于其性能高、成本低、可靠性好，已经成为全球最流行的开源数据库软件，被广泛地被应用在 Internet 上的中小型网站中。随着 MySQL 的不断成熟，它也逐渐出现在更多大规模网站和应用上，比如 Facebook、Twitter 和 Yahoo! 等站点。
 
 ## 如何使用本镜像
+
+> 因所有镜像均位于境外服务器，为了确保所有示例能正常运行，DaoCloud 提供了一套境内镜像源，并与官方源保持同步。
 
 ### 启动一个 `mysql` 服务实例
 
 启动一个 MySQL 实例非常简单：
 
 ```console
-$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d daocloud.io/mysql:tag
 ```
 
 在上述命令中，`some-mysql` 指定了该容器的名字，`my-secret-pw` 指定了 root 用户的密码，`tag` 参数指定了你想要的 MySQL 版本。
@@ -31,7 +33,7 @@ $ docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 下面的命令启动了另一个 MySQL 容器并使用 MySQL 命令行工具访问你之前的 MySQL 服务，之后你就能向你的数据库执行 SQL 语句了：
 
 ```console
-$ docker run -it --link some-mysql:mysql --rm mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+$ docker run -it --link some-mysql:mysql --rm daocloud.io/mysql sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
 在上述命令中 `some-mysql` 就是你原来 MySQL 服务容器的名字。
@@ -59,7 +61,7 @@ $ docker logs some-mysql
 假设 `/my/custom/config-file.cnf` 是你自定义的配置文件，你可以像这样启动一个 MySQL 容器（注意这里直接挂载了配置文件的目录）：
 
 ```console
-$ docker run --name some-mysql -v /my/custom:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+$ docker run --name some-mysql -v /my/custom:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=my-secret-pw -d daocloud.io/mysql:tag
 ```
 
 这会启动一个名为 `some-mysql` 且同时加载了 `/etc/mysql/my.cnf` 和 `/etc/mysql/conf.d/config-file.cnf` 这两个配置文件的新容器，注意这时以后者的配置优先。
@@ -107,7 +109,7 @@ $ chcon -Rt svirt_sandbox_file_t /my/custom
 2. 使用下面的命令启动 `mysql` 容器：
 
 ```console
-$ docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+$ docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d daocloud.io/mysql:tag
 ```
 
 我们通过 `-v /my/own/datadir:/var/lib/mysql` 参数从宿主机挂载 `/my/own/datadir` 目录至容器内作为 `/var/lib/mysql` 目录，那样 MySQL 就会默认将数据文件写入这个目录中。
@@ -126,8 +128,6 @@ $ chcon -Rt svirt_sandbox_file_t /my/own/datadir
 
 如果从一个已存在数据库文件的目录上启动一个 `mysql` 容器的话（特别是一个 `mysql` 子目录），那么 `$MYSQL_ROOT_PASSWORD` 变量应该在启动命令中略去；即使设置了也会被忽略，已存在的数据库不会以任何方式被改变。
 
-## 用户反馈
-
 ### 文档
 
 你可以从 GitHub 的 [`docker-library/docs`](https://github.com/docker-library/docs) 库中的 [`mysql/`](https://github.com/docker-library/docs/tree/master/mysql)目录找到本镜像的文档。在发起一个 pull request 前请确保你已熟悉仓库中 [`README.md`](https://github.com/docker-library/docs/blob/master/README.md) 文档中的相关说明。
@@ -143,3 +143,7 @@ $ chcon -Rt svirt_sandbox_file_t /my/own/datadir
 我们总是乐意接受你的 pull request，不管问题大小，我们会尽可能快速地处理它们。
 
 对于热情的贡献者，在编码之前，我们建议你通过 [GitHub issue](https://github.com/docker-library/mysql/issues) 讨论你的计划。这样其他贡献者会协助你优化你的设计，并避免你做了别人重复的工作。
+
+## 该翻译的许可证
+
+本作品采用[署名-非商业性使用-禁止演绎](http://creativecommons.org/licenses/by-nc-nd/4.0/)进行许可。
