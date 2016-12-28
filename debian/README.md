@@ -1,4 +1,3 @@
-
 # Debian
 > 此镜像从[Docker Hub](https://hub.docker.com/_/debian/)同步并由 DaoCloud 提供中文文档支持，用来帮助国内开发者更方便的使用 Docker 镜像。
 
